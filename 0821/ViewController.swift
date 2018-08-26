@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-//宣告所有元件類別先
+//outlet們宣告所有元件類別先
     @IBOutlet weak var zodiacType: UITextField!
     @IBOutlet weak var genderType: UISegmentedControl!
     @IBOutlet weak var ageSliderControl: UISlider!
@@ -24,20 +24,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    //真相只有一個？
+    //真相只有一個？設定唯一正解
     @IBAction func answerSend(_ sender: Any) {
-        if  zodiacType.text=="獅子"
-        && genderType.selectedSegmentIndex == 1
-        && chooseType.selectedSegmentIndex == 1
-        && ageLabel.text == "31"
-        && numberLabel.text == "9"{
+        if  zodiacType.text=="獅子"//星座要是獅子座
+        && genderType.selectedSegmentIndex == 1//還要是大貓女孩
+        && chooseType.selectedSegmentIndex == 1//人生志願要環遊世界
+        && ageLabel.text == "31"//年紀越接近越好
+            && numberLabel.text == "9"{//最喜歡的數字長長久久囉
            answerImage.image = UIImage(named: "yes")
         } else{ self.answerImage.image = UIImage(named: "no")
    }
 }
+//設定Slider旁的數字隨之變動，傳值來著
     @IBAction func ageSlider(_ sender: Any) {
         ageLabel.isHidden = false
         ageLabel.text = String(Int(ageSliderControl.value)) }
+//設定stepperg數字
     @IBAction func numberStepper(_ sender: UIStepper) {
         numValue = Int(numberStepper.value)
         numberLabel.text = "\(numValue)"
